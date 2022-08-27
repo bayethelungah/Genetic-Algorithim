@@ -1,0 +1,15 @@
+package main;
+import processing.core.PVector;
+
+public class Node {
+	
+	private static String[] moves;
+	private static final int size = 2;
+	private PVector pos;
+	
+	
+	public Node(PVector pos) {
+	  pos = pos	
+	}
+
+}

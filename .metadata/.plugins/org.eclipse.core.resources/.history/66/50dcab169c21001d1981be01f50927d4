@@ -1,0 +1,21 @@
+package main;
+import processing.core.PVector;
+
+public class Node {
+	
+	private static String[] moves;
+	private static final int size = 2;
+	private PVector pos;
+	
+	
+	public Node(PVector pos) {
+	  this.pos = pos;	
+	}
+	
+	public void show(GeneticAlgorithim screen) {
+		screen.fill(0);
+		screen.ellipse(pos.x, pos.y, size, size);
+		
+	}
+
+}

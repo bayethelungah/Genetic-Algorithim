@@ -1,0 +1,46 @@
+package main;
+import processing.core.PVector;
+
+public class Node {
+	
+	private static char[] moves = new char[5];
+	private static final int size = 2;
+	private static final int lifeTime = 10;
+	private float lifeRemaining = lifeTime;
+	private PVector pos;
+	private PVector vel;
+	private PVector acc;
+	
+	
+	public Node(PVector pos) {
+	  this.pos = pos;
+	  
+	  moves[0] = 'L';
+	  moves[1] = 'R';
+	  moves[2] = 'D';
+	  moves[3] = 'U';
+	  moves[4] = ' ';
+	  
+	}
+	
+	public void show(GeneticAlgorithim screen) {
+		screen.fill(0);
+		screen.ellipse(pos.x, pos.y, size, size);
+		
+		
+	}
+	
+	public void run(float deltaTime) {
+		lifeRemaining -= deltaTime;
+		
+	}
+	
+	public void update() {
+		vel.add(acc);
+		pos.add(vel);
+		acc.mult((0);)
+	}
+	
+ 
+
+}

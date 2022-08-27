@@ -1,0 +1,77 @@
+package main;
+import java.util.Random;
+
+import processing.core.PApplet;
+import processing.core.PVector;
+
+public class GeneticAlgorithim extends PApplet {
+	
+	private static final int WINDOW_WIDTH = 500;
+	private static final int WINDOW_HEIGHT = 400;
+	private final int numberOfNodes = 200;
+	private int generations = 0;
+	private Random rand = new Random();
+	private Node[] nodes;
+	private boolean isRunning = false;
+	float time;
+	float deltaTime;
+	
+	public static void main(String[] args) {
+		PApplet.main("main.GeneticAlgorithim");
+
+	}
+	
+	public void settings() {size(WINDOW_WIDTH,WINDOW_HEIGHT);}
+	
+	public void setup() {
+		nodes = initNodes();
+		surface.setTitle("Genetic Algorithim");
+		time = millis();
+		
+		
+	}
+	
+	public void draw() {
+		long currentTime = millis();
+		deltaTime = (currentTime - time) * 0.001f;
+		background(255);
+		
+		for(Node node: nodes) {
+			node.show(this);
+		}
+		
+		if(isRunning) {
+			run(deltaTime);
+		}
+		
+		time = currentTime;
+		
+	}
+	
+	public void keyReleased() {
+		if(key == ' ') {
+			isRunning = true;
+		}
+	}
+	
+	private Node[] initNodes() {
+		Node[] nodes = new Node[numberOfNodes]; 
+		
+		for(int i = 0; i < nodes.length; i++) {
+			nodes[i] = new Node(new PVector(rand.nextInt(WINDOW_WIDTH), rand.nextInt(WINDOW_HEIGHT)));
+		}
+		
+		return nodes;
+		
+	}
+	
+ 
+	
+	private void run(float deltaTime) {
+		  for(Node node: nodes) {
+			  node.run(deltaTime);
+		  }
+	}
+	
+
+}
